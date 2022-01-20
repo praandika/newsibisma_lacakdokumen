@@ -83,24 +83,23 @@
               <th >{{$a->stnk_status}}</th>
               <th >{{$a->bpkb_status}}</th>
               <td>
-                <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-eye"></i>
+                <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal{{$a->id}}"><i class="fa fa-eye"></i>
             </td>
             </tr>
-            
+            @endforeach
           </tbody>
         </table>
         <!--end table-->
-
       </div>
     </div>
-     
   </div>
 </div>
 
 
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@foreach ($data as $a)
+<div class="modal fade" id="exampleModal{{$a->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -109,13 +108,42 @@
       </div>
       <div class="modal-body">
         <form>
+          
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <label for="exampleInputEmail1" class="form-label">Nama Customer</label>
+            <input type="text" class="form-control" value="{{$a->customer_name}}">
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <label for="exampleInputEmail1" class="form-label">NIK Customer</label>
+            <input type="text" class="form-control" value="{{$a->nik}}">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Model Name</label>
+            <input type="text" class="form-control" value="{{$a->model_name}}">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">STCK</label>
+            <input type="text" class="form-control" value="{{$a->stck}}">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">STCK Status</label>
+            <input type="text" class="form-control" value="{{$a->stck_status}}">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">STCK</label>
+            <input type="text" class="form-control" value="{{$a->stnk}}">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">STCK Status</label>
+            <input type="text" class="form-control" value="{{$a->stnk_status}}">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">STCK</label>
+            <input type="text" class="form-control" value="{{$a->bpkb}}">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">STCK Status</label>
+            <input type="text" class="form-control" value="{{$a->bpkb_status}}">
           </div>
         </form>
       </div>
@@ -127,6 +155,7 @@
   </div>
 </div>
 @endforeach
+<!--end modal-->
  
 
 

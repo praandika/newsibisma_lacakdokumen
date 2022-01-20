@@ -25,16 +25,22 @@ class DocumentController extends Controller
         if($nik == true)
         {
             $data = Document::join('sales','documents.sale_id','sales.id')
+            ->join('stocks','sales.stock_id','stocks.id')
+            ->join('units','stocks.unit_id','units.id')
             ->where('nik', $nik)->get();
             return view('home',compact('data'));
 
                 }elseif($frame_no == true){
                     $data = Document::join('sales','documents.sale_id','sales.id')
+                    ->join('stocks','sales.stock_id','stocks.id')
+                    ->join('units','stocks.unit_id','units.id')
                     ->where('frame_no', $frame_no)->get();
                     return view('home',compact('data'));
 
                         }else{
                             $data = Document::join('sales','documents.sale_id','sales.id')
+                            ->join('stocks','sales.stock_id','stocks.id')
+                            ->join('units','stocks.unit_id','units.id')
                             ->where('frame_no', 'id')->get();
                             return view('home',compact('data')); 
                         }
