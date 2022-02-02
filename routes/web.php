@@ -18,6 +18,11 @@ use App\Http\Controllers\DocumentController;
 
 Route::get('/', [DocumentController::class, 'index']);
 
+Route::get('/index',function()
+{
+return view('home2');
+});
+
 Route::get('document/search',[DocumentController::class,'index'])->name('document.search');
 
 Route::get('document/show',[DocumentController::class,'show'])->name('document.show');

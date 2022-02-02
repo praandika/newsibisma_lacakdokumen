@@ -6,6 +6,7 @@ use App\Models\Document;
 use Illuminate\Http\Request;
 use App\Models\Sale;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Validator;
 
 class DocumentController extends Controller
 {
@@ -18,10 +19,18 @@ class DocumentController extends Controller
     {
         
        
+        $validator = Validator::make(request()->all(), [
+     
+            'g-recaptcha-response' => 'recaptcha',
+            // OR since v4.0.0
+            recaptchaFieldName() => recaptchaRuleName()
+        ]);
+        
+        
         $nik = $req->nik;
         $frame_no = $req->frame_no;
-        
 
+ 
         if($nik == true)
         {
             $data = Document::join('sales','documents.sale_id','sales.id')
@@ -44,6 +53,7 @@ class DocumentController extends Controller
                             ->where('frame_no', 'id')->get();
                             return view('home',compact('data')); 
                         }
+
     }
 
 

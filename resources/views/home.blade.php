@@ -6,94 +6,145 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+    <link href= "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="{{asset('assets/css/style2.css')}}" rel="stylesheet"/>
     <title>Lacak Dokumen</title>
     {!! ReCaptcha::htmlScriptTagJsApi() !!}
   </head>
-  <body>
-     
-    
+<body style="background-image: url('{{ asset('assets/img/Fazzio-Banner.jpg')}}'); background-size:cover;">
 
-
-<div class="container mt-5">
-  <div class="row">
-
-    <div class="card">
-      <div class="card-body">
-        <!--form-->
-        <div class="form-check mt-3">
-          <input type="radio" class="form-check-input" id="nik" name="radio-stacked" value="nik" required>
-          <label class="form-check-label" for="flexRadioDefault1">
-            Menggunakan Nomor NIK
-          </label>
+    <div class="jumbotron col-lg-12 col-sm-12 col-md-12" >
+      
+      <div class="container mt-5">
+        <div class="mb-2">
+        <i class="fa fa-home"></i><a style="text-decoration:none; color:black;" href="http://yamahabismagroup.com"> YAMAHA BISMA GROUP</a>
         </div>
-              <div id="form-input">
-                <form action="{{route('document.search')}}" method="get">
-                  @csrf
-    
-                    <div class="mb-3 " id="form-nik">
-                      <input type="text" class="form-control" id="nik" name="nik" >
-                    </div>
-                    <div class="mb-3 " id="form-frame">
-                      {!! htmlFormSnippet() !!}
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
+        <div class="row">
+          
+          <div class="card">
+            <div class="card-body">
+              <!--form-->
+              <div class="form-check mt-3">
+                <input type="radio" class="form-check-input" id="nik" name="radio-stacked" value="nik" required>
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Menggunakan Nomor NIK
+                </label>
               </div>
-    
-        <div class="form-check mt-3">
-          <input type="radio" class="form-check-input" id="frame_no" name="radio-stacked" value="frame_no" required>
-          <label class="form-check-label" for="flexRadioDefault1">
-            Menggunakan Nomor rangka Kendaraan
-          </label>
-        </div> 
-              <div id="form-input2" >
-                <form action="{{route('document.search')}}" method="get">
-                  @csrf
-                    <div class="mb-3 " id="form-frame">
-                      <input type="text" class="form-control" id="frame_no" name="frame_no" >
+                    <div id="form-input">
+                      <form action="{{route('document.search')}}" method="get">
+                        @csrf
+                          <div class="mb-3 " id="form-nik">
+                            <input type="text" class="form-control" id="nik" name="nik" required>
+                          </div>
+                          <div class="mb-3 " id="google" name="google" required>
+                            {{-- {!! htmlFormSnippet() !!} --}}
+                          </div>
+                          <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
                     </div>
-                    <div class="mb-3 " id="form-frame">
-                      {!! htmlFormSnippet() !!}
+          
+          
+              <div class="form-check mt-3">
+                <input type="radio" class="form-check-input" id="frame_no" name="radio-stacked" value="frame_no" required>
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Menggunakan Nomor rangka Kendaraan
+                </label>
+              </div> 
+                    <div id="form-input2" >
+                      <form action="{{route('document.search')}}" method="get">
+                        @csrf
+                          <div class="mb-3 " id="form-frame">
+                            <input type="text" class="form-control" id="frame_no" name="frame_no" required>
+                          </div>
+                          <div class="mb-3" id="google" name="google" >
+                            {{-- {!! htmlFormSnippet() !!} --}}
+                          </div>
+                          <button type="submit" class="btn btn-primary" >Submit</button>
+                        </form>
+                      </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </form>
-                </div>
-              </div>
-              <!--end form-->
-        <!--table-->
-        <table class="table mt-5">
-          <thead>
-            <tr>
-              <th scope="col">Nama</th>
-              <th scope="col">NIK</th>
-              <th scope="col">STCK</th>
-              <th scope="col">STNK</th>
-              <th scope="col">BPKB</th>
-              <th scope="col">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach ($data as $a)
-            <tr>
-              <th >{{$a->customer_name}}</th>
-              <th >{{$a->nik}}</th>
-              <th >{{$a->stck_status}}</th>
-              <th >{{$a->stnk_status}}</th>
-              <th >{{$a->bpkb_status}}</th>
-              <td>
-                <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal{{$a->id}}"><i class="fa fa-eye"></i>
-            </td>
-            </tr>
-            @endforeach
-          </tbody>
-        </table>
-        <!--end table-->
+                 
+                    <!--end form-->
+                    
+              <!--table-->
+             
+              <table class="table mt-5 table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Nama</th>
+                    <th scope="col">NIK</th>
+                    <th scope="col">STCK</th>
+                    <th scope="col">STNK</th>
+                    <th scope="col">BPKB</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @forelse ($data as $a)
+                  <tr>
+
+                @if($a->leasing_id != '1')
+                  
+                    
+                    <tr>
+                      <th colspan="6" style="text-align: center;">Hubungi Leasing</th>
+                    </tr>
+                  
+                  @else
+                  
+
+                    <th >{{$a->customer_name}}</th>
+                    <th >{{$a->nik}}</th>
+
+                    @if($a->stck_status != 'finished')
+                    <td style="background-color:#eb343480">
+                    on process
+                    </td>
+                    @else
+                    <td style="background-color:#52eb3480">
+                    {{ $a->stck_status }}
+                    </td>
+                    @endif
+                    
+
+                     @if($a->stnk_status != 'finished')
+                    <td style="background-color:#eb343480">
+                    on process
+                    </td>
+                    @else
+                    <td style="background-color:#52eb3480">
+                    {{ $a->stnk_status }}
+                    </td>
+                    @endif  
+
+                    @if($a->bpkb_status != 'finished')
+                    <td style="background-color:#eb343480">
+                    on process
+                    </td>
+                    @else
+                    <td style="background-color:#52eb3480">
+                    {{ $a->bpkb_status }}
+                    </td>
+                    @endif
+                    <td>
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal{{$a->id}}"><i class="fa fa-eye"></i></button>
+                    </td>
+                    @endif
+                  </tr>
+                  @empty
+                  <tr>
+                    <th colspan="6" style="text-align: center;">Kosong</th>
+                  </tr>
+                  @endforelse
+                </tbody>
+              </table>
+              <!--end table-->
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+
 
 
 
@@ -149,7 +200,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        
       </div>
     </div>
   </div>
@@ -179,6 +230,8 @@ $("#form-input").slideDown("fast");
 });
 });
 </script>
+
+
 
 <script>
   $(document).ready(function(){
